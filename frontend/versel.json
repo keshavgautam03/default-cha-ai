@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
+    ],
+    "env": {
+      "VITE_API_URL": "https://ai-powered-chatapp-backend.vercel.app"
+    },
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist"
+  }

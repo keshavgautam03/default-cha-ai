@@ -1,0 +1,97 @@
+<<<<<<< HEAD
+version: "3.8"
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - fullstack-chat-app
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ./backend/.env
+    ports:
+      - 5001:5001
+    networks:
+      - fullstack-chat-app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - fullstack-chat-app
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+
+networks:
+  fullstack-chat-app:
+    driver: bridge
+  
+
+=======
+name: fullstack-chat-app
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - fullstack-chat-app
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ./backend/.env
+    ports:
+      - 5001:5001
+    networks:
+      - fullstack-chat-app
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - fullstack-chat-app
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+
+networks:
+  fullstack-chat-app:
+    driver: bridge
+  
+
+>>>>>>> a6d0f2c (commit from mac)
