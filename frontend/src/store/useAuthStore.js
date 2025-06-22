@@ -1,11 +1,13 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-// Change this line
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : import.meta.env.VITE_API_URL;
-
+// Fix the BASE_URL to use the correct domain in production
+const BASE_URL = import.meta.env.MODE === "development" 
+  ? "http://localhost:5001" 
+  : "http://16.171.133.182";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,

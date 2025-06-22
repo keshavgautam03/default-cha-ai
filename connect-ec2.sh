@@ -3,7 +3,7 @@
 # EC2 Connection Script for Chat App
 
 # Replace YOUR_EC2_PUBLIC_IP with your actual EC2 public IP address
-EC2_IP="YOUR_EC2_PUBLIC_IP"
+EC2_IP="16-171-133-182"
 
 echo "🔗 Connecting to EC2 instance..."
 echo "📍 IP Address: $EC2_IP"
